@@ -6,6 +6,17 @@
   .option norvc
   .globl _start
 _start:
+// fill first 2^24 bytes of RAM
+    li  a5,1
+    slli    a5,a5,31
+    li  a3,129
+    slli    a3,a3,24
+.L2:
+    andi    a4,a5,0xff
+    sb  a4,0(a5)
+    addi    a5,a5,1
+    bne a5,a3,.L2
+
   li a5, 0x64002000
   li a1, 0x0F
   li a2, 0x01

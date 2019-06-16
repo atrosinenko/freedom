@@ -6,7 +6,7 @@ FPGA_DIR := $(base_dir)/fpga-shells/intel
 MODEL := FPGAChip
 PROJECT := sifive.freedom.zeowaa.e115
 export CONFIG_PROJECT := sifive.freedom.zeowaa.e115
-export CONFIG := ZeowaaConfig
+export CONFIG := DefaultZeowaaConfig
 export BOARD := zeowaa
 export BOOTROM_DIR := $(base_dir)/bootrom/xip
 
