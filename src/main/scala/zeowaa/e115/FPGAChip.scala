@@ -16,6 +16,14 @@ class FPGAChip(override implicit val p: Parameters) extends ZeowaaShell {
     IBUF(dut.io.jtag.TMS, jtag_tms)
     dut.io.jtag_reset := jtag_rst
 
+    IBUF(dut.io.uart_rx, uart_rx)
+    uart_tx := dut.io.uart_tx
+
+    sd_cs := dut.io.sd_cs
+    sd_sck := dut.io.sd_sck
+    sd_mosi := dut.io.sd_mosi
+    dut.io.sd_miso := sd_miso
+
     Seq(led_0, led_1, led_2, led_3) zip dut.io.gpio.pins foreach {
       case (led, pin) =>
         led := ~Mux(pin.o.oe, pin.o.oval, false.B)
